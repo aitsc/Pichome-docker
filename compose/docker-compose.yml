@@ -5,7 +5,7 @@ services:
     image: mariadb:10.7
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     ports:
-      - 3306:3306
+      - 9002:3306
     volumes:
       - "./db:/var/lib/mysql"
     environment:
@@ -23,7 +23,7 @@ services:
   app:
     image: oaooa/pichome
     ports:
-      - 80:80
+      - 9001:80
     links:
       - db
     volumes:
