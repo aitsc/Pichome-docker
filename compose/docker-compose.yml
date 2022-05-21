@@ -22,9 +22,8 @@ services:
 
   app:
     image: oaooa/pichome
-    container_name: pichome-app  # 容器名称
-    ports:
-      - 9001:80
+    container_name: pichome  # 容器名称
+    # 无需暴露端口, 使用nginx stream 转发到内部IP地址: docker inspect pichome | grep IPAddress
     links:
       - db
     volumes:
@@ -40,8 +39,6 @@ services:
       - mysql_db
       - mysql_password
       - mysql_user
-
- 
 
 secrets:
   mysql_db:
